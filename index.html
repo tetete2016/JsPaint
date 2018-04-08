@@ -4,7 +4,70 @@
     <title>JS Paint</title>
 </head>
 <body>
-    <canvas id="main"></canvas>
+    <style>
+        .left {
+            float: left;
+        }
+
+        .box {
+            background: linear-gradient(#0ff, #fff);
+            float: left;
+        }
+
+        #canvasBox {
+            width: 562px;
+            height: 562px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #vertical {
+            float: left;
+            width: 50px;
+            height: 512px;
+            background-color:#eee;
+        }
+
+        #horizontal {
+            width: 512px;
+            height: 50px;
+            float: left;
+            background-color: #eee;
+        }
+
+        #canvasWrapper {
+            float:left;
+        }
+
+        .slider {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(#0ff, #fff);
+        }
+    </style>
+    <table style="background: linear-gradient(#0ff, #fff);">
+        <tr>
+            <td>
+                <input type="range" min="-4" max="4" step="1" value="0" id="zoom" />
+                <p id="zoomtext">zoom</p>
+            </td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+    </table>
+    <div id="canvasBox">
+        <div id="canvasWrapper">
+            <canvas id="main" width="512" height="512"></canvas>
+        </div>
+        <div id="vertical">
+            <div id="vSlider" class="slider"></div>
+        </div><br />
+        <div id="horizontal">
+            <div id="hSlider" class="slider"></div>
+        </div>
+    </div>
+    <div id="layerBox">
+    </div>
     <script src="jquery-3.3.1.min.js"></script>
     <script src="main.js"></script>
 </body>
