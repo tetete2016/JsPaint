@@ -165,7 +165,7 @@ function draw(l, x, y) {
     console.log(l.w);
 }
 
-$(window).mousedown(function (e) {
+$(document.body).on("vmousedown",function (e) {
     _pointerDown = true;
     update();
     var p = _jcanvas.position();
@@ -195,7 +195,7 @@ $(window).mousedown(function (e) {
     }
     //console.log(_lastposition);
 });
-$(window).mouseup(function (e) {
+$(document.body).on("vmouseup", function (e) {
     _pointerDown = false;
     update();
     e.preventDefault();
@@ -262,13 +262,13 @@ function hSliderEvent(e) {
     }
     e.preventDefault();
 }
-$("#horizontal").mousemove(hSliderEvent);
-$("#horizontal").mousedown(function (e) {
+$("#horizontal").on("vmousemove",hSliderEvent);
+$("#horizontal").on("vmousedown",function (e) {
     _pointerDown = true;
     _hon = false;
     hSliderEvent(e);
 });
-$("#horizontal").mouseleave(function (e) {
+$("#horizontal").on("vmouseleave",function (e) {
     //_pointerDown = fal;
     _hon = false;
 });
