@@ -193,12 +193,13 @@ $(window).mousedown(function (e) {
         _lastposition.y = y;
         console.log("out of bounds");
     }
-    console.log(_lastposition);
+    //console.log(_lastposition);
 });
 $(window).mouseup(function (e) {
     _pointerDown = false;
     update();
     e.preventDefault();
+    _hon = false;
 });
 _jcanvas.mousemove(function (e) {
     var p = _jcanvas.offset();
@@ -234,39 +235,77 @@ $("#zoom").change(function (e) {
 });
 
 var _horizontalElement = { bg: $("#horizontal"), forward: $("#hSlider") };
+var _hon = false;
+var _hMargin = 0;
+
 function hSliderEvent(e) {
+    //console.log(_hon);
     if (_pointerDown) {
         var p = _horizontalElement.bg.position();
-        _horizontal = e.pageX - p.left;
+        var h1 = e.pageX - p.left + _hMargin;
+        if (!_hon) {
+            var p1 = _horizontalElement.forward.position();
+            _hMargin = _horizontal - (e.pageX - p.left);
+            console.log(_hMargin);
+            if (_hMargin < -50 || 0<_hMargin)
+                _hMargin = -25;
+        }
+        _horizontal = e.pageX - p.left + _hMargin;
         _horizontalElement.forward.css({
             position: "absolute",
             marginLeft: 0, marginTop: 0,
             top: p.top, left: p.left + _horizontal
         });
+        _hon = true;
         update();
         e.preventDefault();
     }
     e.preventDefault();
 }
 $("#horizontal").mousemove(hSliderEvent);
-$("#horizontal").mousedown(function (e) { _pointerDown = true; hSliderEvent(e); });
+$("#horizontal").mousedown(function (e) {
+    _pointerDown = true;
+    _hon = false;
+    hSliderEvent(e);
+});
+$("#horizontal").mouseleave(function (e) {
+    //_pointerDown = fal;
+    _hon = false;
+});
 
 var _verticalElement = { bg: $("#vertical"), forward: $("#vSlider") };
+var _von = false;
+var _vMargin = 0;
 function vSliderEvent(e) {
     if (_pointerDown) {
         var p = _verticalElement.bg.position();
-        _vertical = e.pageY - p.top;
+
+        //var v1 = e.pageY - p.top + _vMargin;
+        if (!_von) {
+            _vMargin = _vertical - (e.pageY - p.top);
+            console.log(_vMargin);
+            if (_vMargin < -50 || 0 < _vMargin)
+                _vMargin = -25;
+        }
+        _vertical = e.pageY - p.top + _vMargin;
+        
         _verticalElement.forward.css({
             position: "absolute",
             marginLeft: 0, marginTop: 0,
             top: p.top + _vertical, left: p.left
         });
         update();
+        _von = true;
     }
     e.preventDefault();
 }
 $("#vertical").mousemove(vSliderEvent);
-$("#vertical").mousedown(function (e) { _pointerDown = true; vSliderEvent(e); });
+$("#vertical").mousedown(function (e) {
+    _von = false;_pointerDown = true; vSliderEvent(e); });
+$("#vertical").mouseleave(function (e) {
+    //_pointerDown = fal;
+    _von = false;
+});
 /*
 $("#horizontal").draggable("disable");
 $("#vertical").draggable("disable");
