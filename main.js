@@ -299,13 +299,23 @@ function vSliderEvent(e) {
     }
     e.preventDefault();
 }
+/*
 $("#vertical").mousemove(vSliderEvent);
 $("#vertical").mousedown(function (e) {
     _von = false;_pointerDown = true; vSliderEvent(e); });
 $("#vertical").mouseleave(function (e) {
     //_pointerDown = fal;
     _von = false;
+});*/
+$("#vertical").on("vmousemove",vSliderEvent);
+$("#vertical").on("vmousedown",function (e) {
+    _von = false; _pointerDown = true; vSliderEvent(e);
 });
+$("#vertical").on("vmouseleave",function (e) {
+    //_pointerDown = fal;
+    _von = false;
+});
+console.log($("#vertical").mousemove);
 /*
 $("#horizontal").draggable("disable");
 $("#vertical").draggable("disable");
