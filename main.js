@@ -139,10 +139,10 @@ function draw(l, x, y) {
     var x1 = _lastposition.x;
     var y1 = _lastposition.y;
     if (Math.abs(dx) > n) {
-        n = Math.floor(Math.abs(dx));
+        n = Math.ceil(Math.abs(dx));
     }
     if (Math.abs(dy) > n) {
-        n = Math.floor(Math.abs(dy));
+        n = Math.ceil(Math.abs(dy));
     }
     dx /= n;
     dy /= n;
