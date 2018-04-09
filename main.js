@@ -198,7 +198,7 @@ $(document.body).on("vmousedown",function (e) {
 $(document.body).on("vmouseup", function (e) {
     _pointerDown = false;
     update();
-    e.preventDefault();
+    //e.preventDefault();
     _hon = false;
 });
 _jcanvas.on("vmousemove",function (e) {
