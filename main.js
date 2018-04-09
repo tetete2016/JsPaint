@@ -201,7 +201,7 @@ $(document.body).on("vmouseup", function (e) {
     e.preventDefault();
     _hon = false;
 });
-_jcanvas.mousemove(function (e) {
+_jcanvas.on("vmousemove",function (e) {
     var p = _jcanvas.offset();
     var x = e.pageX - p.left;
     var y = e.pageY - p.top;
