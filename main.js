@@ -185,7 +185,7 @@ $(document.body).on("vmousedown",function (e) {
         if (0 < x && x < _w && 0 < y && y < _h) {
             draw(_layers[_selectedLayer], x, y);
         }
-        e.preventDefault();
+        //e.preventDefault();
     } else {
         x -= marginX;
         y -= marginY;
@@ -223,7 +223,7 @@ _jcanvas.on("vmousemove",function (e) {
     } else {
     }
     update();
-    e.preventDefault();
+    //e.preventDefault();
 });
 
 //toolbox
@@ -258,9 +258,9 @@ function hSliderEvent(e) {
         });
         _hon = true;
         update();
-        e.preventDefault();
+        //e.preventDefault();
     }
-    e.preventDefault();
+    //e.preventDefault();
 }
 $("#horizontal").on("vmousemove",hSliderEvent);
 $("#horizontal").on("vmousedown",function (e) {
@@ -297,7 +297,7 @@ function vSliderEvent(e) {
         update();
         _von = true;
     }
-    e.preventDefault();
+    //e.preventDefault();
 }
 /*
 $("#vertical").mousemove(vSliderEvent);
